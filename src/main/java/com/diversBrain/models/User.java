@@ -1,18 +1,16 @@
 package com.diversBrain.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,15 +22,13 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
-    private String password;
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    private Date createdAt;
+    private String password;  
+    private LocalDateTime createdAt;
     private boolean isActive;
 
-    //  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    // @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-    // inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @ManyToOne
+@JoinColumn(name = "role_id")
+private Role role;
 
     
     public Integer getId() {
@@ -66,15 +62,15 @@ public class User {
         this.password = password;
     }
     public Role getRole() {
-        return role;
+        return role; 
     }
-    public void setRole(Role role) {
+    public void setRoles(Role role) {
         this.role = role;
     }
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
     public boolean isActive() {
@@ -84,7 +80,7 @@ public class User {
         this.isActive = isActive;
     }
     public User(Integer id, String firstname, String lastname, String email, String password, Role role,
-            Date createdAt, boolean isActive) {
+            LocalDateTime createdAt, boolean isActive) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -164,6 +160,7 @@ public class User {
             return false;
         return true;
     }
+    
 
     
 }

@@ -1,10 +1,12 @@
 package com.diversBrain.repository;
 
-public class RoleRepository {
+import java.util.Optional;
 
-    public Object findByRole(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByRole'");
-    }
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.diversBrain.models.Role;
+
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+ 
+  
 }

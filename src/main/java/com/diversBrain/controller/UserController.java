@@ -1,5 +1,6 @@
 package com.diversBrain.controller;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -24,13 +25,14 @@ import com.diversBrain.repository.UserRepository;
 public class UserController {
     
     private final UserRepository userRepository;
-    // private final RoleRepository roleRepository;
+    LocalDateTime dateTime = LocalDateTime.now();
+    private final RoleRepository roleRepository;
    
 
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
-        // this.roleRepository = roleRepository;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -60,6 +62,10 @@ public class UserController {
         User user = new User();
         user.setEmail(registerDto.getEmail());
         user.setPassword(registerDto.getPassword());
+        user.setFirstname(registerDto.getFirstname());
+        user.setLastname(registerDto.getLastname());
+        user.setCreatedAt(dateTime);
+        user.setRoles(registerDto.getRole()); 
         userRepository.save(user);
 
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
