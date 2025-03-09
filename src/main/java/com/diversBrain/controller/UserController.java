@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Optional;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.diversBrain.dto.LoginDTO;
 import com.diversBrain.dto.RegisterDto;
 import com.diversBrain.models.Role;
 import com.diversBrain.models.User;
@@ -69,6 +72,13 @@ public class UserController {
         userRepository.save(user);
 
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
+    }
+
+     @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO) {
+        loginDTO.getEmail();
+        loginDTO.getPassword();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 
