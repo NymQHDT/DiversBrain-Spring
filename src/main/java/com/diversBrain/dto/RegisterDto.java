@@ -4,9 +4,6 @@ import java.util.Date;
 
 import com.diversBrain.models.Role;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
 public class RegisterDto {
     private String email;
     private String password;

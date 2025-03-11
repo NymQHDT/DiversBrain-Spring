@@ -1,10 +1,8 @@
 package com.diversBrain.controller;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Optional;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.diversBrain.dto.LoginDTO;
 import com.diversBrain.dto.RegisterDto;
-import com.diversBrain.models.Role;
 import com.diversBrain.models.User;
 import com.diversBrain.repository.RoleRepository;
 import com.diversBrain.repository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class UserController {
     
+    @Autowired
     private final UserRepository userRepository;
     LocalDateTime dateTime = LocalDateTime.now();
     private final RoleRepository roleRepository;
@@ -39,20 +37,20 @@ public class UserController {
     }
 
 
-     @GetMapping("/public")
-    public String publicApi () {
-        return "(\"message\" : \"PUBLIC API\")";
-    }
+    //  @GetMapping("/public")
+    // public String publicApi () {
+    //     return "(\"message\" : \"PUBLIC API\")";
+    // }
 
-    @GetMapping("/user")
-    public String usercApi () {
-        return "(\"message\" : \"USER API\")";
-    }
+    // @GetMapping("/user")
+    // public String usercApi () {
+    //     return "(\"message\" : \"USER API\")";
+    // }
 
-    @GetMapping("/admin")
-    public String AdminApi () {
-        return "(\"message\" : \"ADMIN API\")";
-    }
+    // @GetMapping("/admin")
+    // public String AdminApi () {
+    //     return "(\"message\" : \"ADMIN API\")";
+    // }
 
     
 
