@@ -2,6 +2,7 @@ package com.diversBrain.models;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,6 +26,10 @@ public class User {
     private String password;  
     private LocalDateTime createdAt;
     private boolean isActive;
+    private String companyName;
+    private String siret;
+    private String address;
+    private String phone;
 
     @ManyToOne
 @JoinColumn(name = "role_id")
@@ -64,9 +69,10 @@ private Role role;
     public Role getRole() {
         return role; 
     }
-    public void setRoles(Role role) {
+    public void setRole(Role role) {
         this.role = role;
-    }
+
+    }    
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -79,8 +85,37 @@ private Role role;
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+    public String getSiret() {
+        return siret;
+    }
+    public void setSiret(String siret) {
+        this.siret = siret;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    
+
+  
     public User(Integer id, String firstname, String lastname, String email, String password, Role role,
-            LocalDateTime createdAt, boolean isActive) {
+            LocalDateTime createdAt, boolean isActive, String companyName, String siret, String address, String phone) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -89,15 +124,23 @@ private Role role;
         this.role = role;
         this.createdAt = createdAt;
         this.isActive = isActive;
+        this.companyName = companyName;
+        this.siret = siret;
+        this.address = address;
+        this.phone = phone;
     }
     public User() {
     }
+
     @Override
     public String toString() {
         return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
-                + ", password=" + password + ", role=" + role + ", createdAt=" + createdAt + ", isActive=" + isActive
+                + ", password=" + password + ", createdAt=" + createdAt + ", isActive=" + isActive + ", companyName="
+                + companyName + ", siret=" + siret + ", address=" + address + ", phone=" + phone + ", role=" + role
                 + "]";
     }
+    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -107,9 +150,13 @@ private Role role;
         result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((password == null) ? 0 : password.hashCode());
-        result = prime * result + ((role == null) ? 0 : role.hashCode());
         result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
         result = prime * result + (isActive ? 1231 : 1237);
+        result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
+        result = prime * result + ((siret == null) ? 0 : siret.hashCode());
+        result = prime * result + ((address == null) ? 0 : address.hashCode());
+        result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+        result = prime * result + ((role == null) ? 0 : role.hashCode());
         return result;
     }
     @Override
@@ -146,17 +193,37 @@ private Role role;
                 return false;
         } else if (!password.equals(other.password))
             return false;
-        if (role == null) {
-            if (other.role != null)
-                return false;
-        } else if (!role.equals(other.role))
-            return false;
         if (createdAt == null) {
             if (other.createdAt != null)
                 return false;
         } else if (!createdAt.equals(other.createdAt))
             return false;
         if (isActive != other.isActive)
+            return false;
+        if (companyName == null) {
+            if (other.companyName != null)
+                return false;
+        } else if (!companyName.equals(other.companyName))
+            return false;
+        if (siret == null) {
+            if (other.siret != null)
+                return false;
+        } else if (!siret.equals(other.siret))
+            return false;
+        if (address == null) {
+            if (other.address != null)
+                return false;
+        } else if (!address.equals(other.address))
+            return false;
+        if (phone == null) {
+            if (other.phone != null)
+                return false;
+        } else if (!phone.equals(other.phone))
+            return false;
+        if (role == null) {
+            if (other.role != null)
+                return false;
+        } else if (!role.equals(other.role))
             return false;
         return true;
     }

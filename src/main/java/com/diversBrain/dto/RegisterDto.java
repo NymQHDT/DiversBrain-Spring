@@ -9,9 +9,15 @@ public class RegisterDto {
     private String password;
     private String firstname;
     private String lastname;  
-    private Role role;
+    private String role;
     private Date createdAt;
     private boolean isActive;
+
+     // Champs professionnels
+     private String companyName;
+     private String siret;
+     private String address;
+    private String phone;
 
 
 
@@ -64,12 +70,46 @@ public class RegisterDto {
         this.password = password;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
+    }
+
+    
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getSiret() {
+        return siret;
+    }
+
+    public void setSiret(String siret) {
+        this.siret = siret;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public RegisterDto() {
