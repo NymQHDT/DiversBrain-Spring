@@ -38,11 +38,11 @@ public class Role {
     this.id = id;
   }
 
-  public ERole getName() {
+  public ERole getname() {
     return name;
   }
 
-  public void setName(ERole name) {
+  public void setname(ERole name) {
     this.name = name;
   }
 }    

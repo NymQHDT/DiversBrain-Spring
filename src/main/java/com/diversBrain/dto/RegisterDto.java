@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.diversBrain.models.Role;
 
-public class RegisterDto {
+public class RegisterDTO {
     private String email;
     private String password;
     private String firstname;
@@ -112,7 +112,7 @@ public class RegisterDto {
         this.phone = phone;
     }
 
-    public RegisterDto() {
+    public RegisterDTO() {
     }
 
 }

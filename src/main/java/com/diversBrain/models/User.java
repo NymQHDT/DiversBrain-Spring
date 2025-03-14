@@ -31,7 +31,7 @@ public class User {
     private String address;
     private String phone;
 
-    @ManyToOne
+@ManyToOne
 @JoinColumn(name = "role_id")
 private Role role;
 

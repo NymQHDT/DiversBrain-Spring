@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diversBrain.dto.LoginDTO;
-import com.diversBrain.dto.RegisterDto;
+import com.diversBrain.dto.RegisterDTO;
 import com.diversBrain.models.ERole;
 import com.diversBrain.models.Role;
 import com.diversBrain.models.User;
@@ -56,7 +56,7 @@ public class UserController {
     // }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> register(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<Map<String, String>> register(@RequestBody RegisterDTO registerDto) {
         if (userRepository.existsByEmail(registerDto.getEmail())) {
             return new ResponseEntity<>(Map.of("error", "Username is already taken!"), HttpStatus.BAD_REQUEST);
         }
