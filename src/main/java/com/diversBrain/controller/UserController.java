@@ -23,6 +23,7 @@ import com.diversBrain.models.ERole;
 import com.diversBrain.models.Role;
 import com.diversBrain.models.User;
 import com.diversBrain.repository.RoleRepository;
+import com.diversBrain.repository.SymptomsRepository;
 import com.diversBrain.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -34,10 +35,12 @@ public class UserController {
     private final UserRepository userRepository;
     LocalDateTime dateTime = LocalDateTime.now();
     private final RoleRepository roleRepository;
+    private final SymptomsRepository symptomsRepository;
 
-    public UserController(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserController(UserRepository userRepository, RoleRepository roleRepository, SymptomsRepository symptomsRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.symptomsRepository = symptomsRepository;
     }
 
     // @GetMapping("/public")
@@ -98,5 +101,10 @@ public class UserController {
         loginDTO.getEmail();
         loginDTO.getPassword();
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/symptoms")
+    public ResponseEntity<Map<String, String>> symptoms() {
+        return ResponseEntity.ok(Map.of("message", "Symptoms registered successfully!"));
     }
 }

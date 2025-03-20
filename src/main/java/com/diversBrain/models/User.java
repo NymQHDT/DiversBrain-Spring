@@ -1,9 +1,11 @@
 package com.diversBrain.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,6 +38,8 @@ public class User {
 @JoinColumn(name = "role_id")
 private Role role;
 
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Symptoms> symptoms = new ArrayList<>();
     
     public Integer getId() {
         return id;
@@ -73,6 +78,9 @@ private Role role;
         this.role = role;
 
     }    
+
+
+    
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -227,7 +235,6 @@ private Role role;
             return false;
         return true;
     }
-    
 
     
 }

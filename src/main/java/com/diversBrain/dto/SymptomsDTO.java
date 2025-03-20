@@ -6,7 +6,7 @@ import java.time.Duration;
 public class SymptomsDTO {
     private String name;
     private Date date;
-    private Duration lasting; 
+    private DurationDTO lasting; 
     private int intensity;
     private String triggers; 
     private String calming;
@@ -20,10 +20,11 @@ public class SymptomsDTO {
     public void setDate(Date date) {
         this.date = date;
     }
-    public Duration getLasting() {
+    public DurationDTO getLasting() {
         return lasting;
     }
-    public void setLasting(Duration lasting) {
+    
+    public void setLasting(DurationDTO lasting) {
         this.lasting = lasting;
     }
     public String getName() {
