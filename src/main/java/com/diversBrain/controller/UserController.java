@@ -103,8 +103,8 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/symptoms")
-    public ResponseEntity<Map<String, String>> symptoms() {
-        return ResponseEntity.ok(Map.of("message", "Symptoms registered successfully!"));
-    }
+    // @GetMapping("/symptoms")
+    // public ResponseEntity<Map<String, String>> symptoms() {
+    //     return ResponseEntity.ok(Map.of("message", "Symptoms registered successfully!"));
+    // }
 }

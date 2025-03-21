@@ -5,7 +5,6 @@ import com.diversBrain.models.Symptoms;
 import com.diversBrain.models.User;
 import com.diversBrain.repository.SymptomsRepository;
 import com.diversBrain.repository.UserRepository;
-import com.diversBrain.service.SymptomService;
 
 import java.time.Duration;
 import java.util.List;
@@ -32,7 +31,7 @@ public class SymptomsController {
     @Autowired
     private final SymptomsRepository symptomsRepository;
     private final UserRepository userRepository;
-    private SymptomService symptomService;
+    // private SymptomService symptomService;
     
 
     public SymptomsController(SymptomsRepository symptomsRepository, UserRepository userRepository) {
@@ -64,24 +63,24 @@ public class SymptomsController {
         return ResponseEntity.ok(Map.of("message", "Symptoms registered successfully!"));    
     }
     
-     @PostMapping
-    public ResponseEntity<Symptoms> createSymptom(@RequestBody Symptoms symptom, Authentication authentication) {
-        // Récupérer l'utilisateur connecté à partir du contexte de sécurité
-        String username = user.getName();
-        User currentUser = userRepository.findByUsername(username);
+    //  @PostMapping
+    // public ResponseEntity<Symptoms> createSymptom(@RequestBody Symptoms symptom, Authentication authentication) {
+    //     // Récupérer l'utilisateur connecté à partir du contexte de sécurité
+    //     String username = user.getName();
+    //     User currentUser = userRepository.findByUsername(username);
         
-        Symptoms savedSymptom = symptomService.saveSymptom(symptom, currentUser);
-        return ResponseEntity.ok(savedSymptom);
-    }
+    //     Symptoms savedSymptom = symptomService.saveSymptom(symptom, currentUser);
+    //     return ResponseEntity.ok(savedSymptom);
+    // }
     
-    @GetMapping("/my")
-    public ResponseEntity<List<Symptoms>> getMySymptoms(Authentication authentication) {
-        String username = authentication.getName();
-        User currentUser = userRepository.findByUsername(username);
+    // @GetMapping("/my")
+    // public ResponseEntity<List<Symptoms>> getMySymptoms(Authentication authentication) {
+    //     String username = authentication.getName();
+    //     User currentUser = userRepository.findByUsername(username);
         
-        List<Symptoms> symptoms = symptomService.getSymptomsByUser(currentUser);
-        return ResponseEntity.ok(symptoms);
-    }
+    //     List<Symptoms> symptoms = symptomService.getSymptomsByUser(currentUser);
+    //     return ResponseEntity.ok(symptoms);
+    // }
 
 
     

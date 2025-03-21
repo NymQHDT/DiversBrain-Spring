@@ -12,5 +12,5 @@ public interface SymptomsRepository extends JpaRepository<Symptoms, Integer> {
     Symptoms findById (int id);
     Symptoms findByName (String name);
     boolean existsByName (String name);
-    List<Symptoms> findByUser(User user);
+    // List<Symptoms> findByUser(User user);
 }

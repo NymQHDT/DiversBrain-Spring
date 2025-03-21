@@ -30,9 +30,9 @@ public class Symptoms {
     private String description;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "user_id")
+    // private User user;
 
     public Date getDate() {
         return date;
@@ -151,9 +151,9 @@ public class Symptoms {
 
     public Symptoms() {
     }
-    public void setUser(User currentUser) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setUser'");
-    }
+    // public void setUser(User currentUser) {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'setUser'");
+    // }
     
 }
